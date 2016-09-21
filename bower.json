@@ -1,5 +1,5 @@
 {
-  "name": "pegasus-generic-wordpress",
+  "name": "seed-generic-wordpress",
   "description": "Pulls in some useful commonly used scripts",
   "main": "",
   "license": "(MIT OR Apache-2.0)",

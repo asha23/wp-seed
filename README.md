@@ -1,7 +1,7 @@
 
 ### Wordpress Seed Theme
 
-This is a simple seed theme with Bower and gulp interactions.
+This is a simple Bootstrap seed theme with Bower and gulp interactions.
 
 	npm install
 	bower install
@@ -61,3 +61,19 @@ Some of these are not used. But are available.
 * run-sequence
 * sassdoc
 * stream-combiner2
+
+#### Advanced Custom Fields
+
+This theme requires Advanced Custom Fields Professional. Which if you don't have already, you should get.
+
+The acf-json file starts up the video and gallery sections as part of the theme installation.
+
+Delete this folder if you don't require this functionality.
+
+#### General
+
+The views folder is intended as a place to add content types for the theme.
+
+It's been developed over the past 3 or so years with the intention to get up and running quickly with a Bootstrap 3+ based structure. A version of it has been used it in a great many enterprise level WordPress installations so it can be considered a (relatively) stable version 1.
+
+I am releasing this as an open source theme set so feel free to iterate, clone, fork and debug it. Any extra features would also be great.

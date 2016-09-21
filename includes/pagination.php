@@ -4,7 +4,7 @@
 //******************************************************************************
 // SETUP PAGINATION
 //******************************************************************************
-function peg_pagination($pages = '', $range = 2, $nextPrev = 0, $next ='', $prev = '', $separator = '|'){
+function seed_pagination($pages = '', $range = 2, $nextPrev = 0, $next ='', $prev = '', $separator = '|'){
 	$showitems = ($range * 2)+1;
 
 	global $paged;

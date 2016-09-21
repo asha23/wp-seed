@@ -5,7 +5,7 @@
 // Read more text > bootstrap button
 
 function my_more_link( $link, $link_button ) {     
-    return str_replace( $link_button, '<p><a href="' . get_permalink() . '" class="readmore btn btn-sm btn-primary ">' . __( 'Read More', 'PEGtheme' ) . ' </a> </p>', $link );
+    return str_replace( $link_button, '<p><a href="' . get_permalink() . '" class="readmore btn btn-sm btn-primary ">' . __( 'Read More', 'SEEDtheme' ) . ' </a> </p>', $link );
 }
 
 add_filter( 'the_content_more_link', 'my_more_link', 10, 2 );

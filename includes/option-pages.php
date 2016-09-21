@@ -4,20 +4,20 @@
 // ADD THEME OPTION PAGE TO 'APPEARANCE' MENU
 //******************************************************************************
 
-function peg_theme_options() {
-    add_theme_page( 'Theme Options', 'Theme Options', 'edit_theme_options', 'theme_options', 'peg_theme_options_page' );
+function seed_theme_options() {
+    add_theme_page( 'Theme Options', 'Theme Options', 'edit_theme_options', 'theme_options', 'seed_theme_options_page' );
 }
-add_action( 'admin_menu', 'peg_theme_options' );
+add_action( 'admin_menu', 'seed_theme_options' );
 
 
 //******************************************************************************
 // REGISTER THEME OPTIONS SUPPORT
 //******************************************************************************
 
-function peg_register_settings() {
-    register_setting( 'peg_theme_options', 'peg_options' );
+function seed_register_settings() {
+    register_setting( 'seed_theme_options', 'seed_options' );
 }
-add_action( 'admin_init', 'peg_register_settings' );
+add_action( 'admin_init', 'seed_register_settings' );
 
 
 //******************************************************************************
@@ -63,8 +63,8 @@ if( function_exists('acf_add_options_page') ) {
 }
 
 
-function peg_theme_options_page() {
-    global $peg_options, $peg_categories, $peg_layouts;
+function seed_theme_options_page() {
+    global $seed_options, $seed_categories, $seed_layouts;
 
     if ( ! isset( $_REQUEST['updated'] ) )
     $_REQUEST['updated'] = false; ?>
@@ -79,12 +79,12 @@ function peg_theme_options_page() {
 
 	    <form id="options" method="post" action="options.php">
 
-		    <?php $settings = get_option( 'peg_options', $peg_options ); ?>
+		    <?php $settings = get_option( 'seed_options', $seed_options ); ?>
 
 		    <?php /* This function outputs some hidden fields required by the form,
 		    including a nonce, a unique number used to ensure the form has been submitted from the admin page
 		    and not somewhere else, very important for security */ ?>
-		    <?php settings_fields( 'peg_theme_options' ); ?>
+		    <?php settings_fields( 'seed_theme_options' ); ?>
 
 		 	<h3>Brand Logo</h3>
 
@@ -96,8 +96,8 @@ function peg_theme_options_page() {
 				    	<img style="display: none;" id="brand_logo" src="<?php esc_attr_e($settings['brand_logo']); ?>">
 				    </td>
 				    <td>
-				    	<input name="peg_options[brand_logo]" type="hidden" value="<?php esc_attr_e($settings['brand_logo']); ?>" />
-				    	<input id="brand_logo_button" class="button upload-image" type="button" name="peg_options[brand_logo]" value="Upload Logo" />
+				    	<input name="seed_options[brand_logo]" type="hidden" value="<?php esc_attr_e($settings['brand_logo']); ?>" />
+				    	<input id="brand_logo_button" class="button upload-image" type="button" name="seed_options[brand_logo]" value="Upload Logo" />
 				    	<?php if ( $settings['brand_logo'] != '') : ?>
 				    		<input id="brand_logo_remove" class="button remove-image" type="button" value="Remove" />
 				    	<?php endif; ?>
@@ -111,8 +111,8 @@ function peg_theme_options_page() {
 				    	<img style="display: none;" id="brand_logo_inside" src="<?php esc_attr_e($settings['brand_logo_inside']); ?>">
 				    </td>
 				    <td>
-				    	<input name="peg_options[brand_logo_inside]" type="hidden" value="<?php esc_attr_e($settings['brand_logo_inside']); ?>" />
-				    	<input id="brand_logo_inside_button" class="button upload-image" type="button" name="peg_options[brand_logo_inside]" value="Upload Logo" />
+				    	<input name="seed_options[brand_logo_inside]" type="hidden" value="<?php esc_attr_e($settings['brand_logo_inside']); ?>" />
+				    	<input id="brand_logo_inside_button" class="button upload-image" type="button" name="seed_options[brand_logo_inside]" value="Upload Logo" />
 				    	<?php if ( $settings['brand_logo_inside'] != '') : ?>
 				    		<input id="brand_logo_inside_remove" class="button remove-image" type="button" value="Remove" />
 				    	<?php endif; ?>
@@ -132,8 +132,8 @@ function peg_theme_options_page() {
 				    	<?php if ( $settings['fav_icon'] != '') : ?><img id="fav_icon" src="<?php esc_attr_e($settings['fav_icon']); ?>"><?php endif; ?>
 				    </td>
 				    <td>
-				    	<input name="peg_options[fav_icon]" type="hidden" value="<?php esc_attr_e($settings['fav_icon']); ?>" />
-				    	<input id="fav_icon_button" class="button upload-image" type="button" name="peg_options[fav_icon]" value="Upload Icon" />
+				    	<input name="seed_options[fav_icon]" type="hidden" value="<?php esc_attr_e($settings['fav_icon']); ?>" />
+				    	<input id="fav_icon_button" class="button upload-image" type="button" name="seed_options[fav_icon]" value="Upload Icon" />
 				    	<?php if ( $settings['fav_icon'] != '') : ?><input id="fav_icon_remove" class="button remove-image" type="button" value="Remove" /><?php endif; ?>
 				    </td>
 				    <td class="hint">Used in the browser address bar</td>
@@ -144,8 +144,8 @@ function peg_theme_options_page() {
 				    	<?php if ( $settings['touch_icon'] != '') : ?><img id="touch_icon" src="<?php esc_attr_e($settings['touch_icon']); ?>"><?php endif; ?>
 				    </td>
 				    <td>
-				    	<input name="peg_options[touch_icon]" type="hidden" value="<?php esc_attr_e($settings['touch_icon']); ?>" />
-				    	<input id="touch_icon_button" class="button upload-image" type="button" name="peg_options[touch_icon]" value="Upload Icon" />
+				    	<input name="seed_options[touch_icon]" type="hidden" value="<?php esc_attr_e($settings['touch_icon']); ?>" />
+				    	<input id="touch_icon_button" class="button upload-image" type="button" name="seed_options[touch_icon]" value="Upload Icon" />
 				    	<?php if ( $settings['touch_icon'] != '') : ?><input id="touch_icon_remove" class="button remove-image" type="button" value="Remove" /><?php endif; ?>
 				    </td>
 				    <td class="hint">Used when saved to Apple device home screen</td>
