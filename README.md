@@ -68,7 +68,7 @@ This theme requires Advanced Custom Fields Professional. Which if you don't have
 
 The acf-json file starts up the video and gallery sections as part of the theme installation.
 
-Delete this folder if you don't require this functionality.
+Delete the contents of this folder if you don't require this functionality.
 
 #### General
 
