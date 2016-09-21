@@ -2,6 +2,8 @@
 // INCLUDES
 // ===========================================================================================================
 
+@import "partials/mixins";
+
 // BOOTSTRAP LAYOUT
 
 @import "bootstrap/custom-variables";
@@ -20,7 +22,7 @@
 }
 
 // PARTIALS
-@import "partials/mixins";
+
 @import "partials/globals";
 @import "partials/typography";
 @import "partials/colours";

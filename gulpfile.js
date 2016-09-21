@@ -60,19 +60,20 @@ var config = {
 // ===========================================================================================================
 // Add the JS files here (these are compiled out from the bower directory and placed in the vendor_libs folder)
 // Alternatively, just refer to the bower folders directly if you like
+// Uncomment the ones we have already added if you need to use them
 // ===========================================================================================================
 
 var jsFileList = [
 	config.jsPathVendor  	+ 'respond/respond.js',
     config.jsPathVendor 	+ 'bootstrap-js/bootstrap.js',
-    config.bowerPath 		+ 'lightgallery/dist/js/lightgallery.js',
-    config.bowerPath 		+ 'lightgallery/dist/js/lg-thumbnail.js',
-    config.bowerPath 		+ 'lightgallery/dist/js/lg-fullscreen.js',
-    config.bowerPath 		+ 'lightgallery/dist/js/lg-video.js',
-	config.jsPathVendor 	+ 'isotope/isotope.pkgd.js',
-	config.jsPathVendor 	+ 'cycle2/jquery.cycle2.js',
-	config.jsPathVendor 	+ 'slick/slick.js',
-	config.jsPathVendor 	+ 'matchHeight/jquery.matchHeight.js',
+    // config.bowerPath 		+ 'lightgallery/dist/js/lightgallery.js',
+    // config.bowerPath 		+ 'lightgallery/dist/js/lg-thumbnail.js',
+    // config.bowerPath 		+ 'lightgallery/dist/js/lg-fullscreen.js',
+    // config.bowerPath 		+ 'lightgallery/dist/js/lg-video.js',
+	// config.jsPathVendor 	+ 'isotope/isotope.pkgd.js',
+	// config.jsPathVendor 	+ 'cycle2/jquery.cycle2.js',
+	// config.jsPathVendor 	+ 'slick/slick.js',
+	// config.jsPathVendor 	+ 'matchHeight/jquery.matchHeight.js',
 	config.jsPath 			+ '/scripts.js'
 ];
 
@@ -80,8 +81,8 @@ var jsFileList = [
 
 var scssFilePaths = [
     config.bowerPath 		+ 'components-font-awesome/scss/',
-    config.bowerPath 		+ 'lightgallery/dist/css/',
-	config.bowerPath 		+ 'slick-carousel/slick/'
+    //config.bowerPath 		+ 'lightgallery/dist/css/',
+	//config.bowerPath 		+ 'slick-carousel/slick/'
 ];
 
 var bootstrapPath = [
@@ -122,7 +123,7 @@ gulp.task('default', function() {
 // Bower tasks
 //
 // This gets all the Bower stuff in the correct place. Takes a little bit of jiggery pokery to sort out, but it's worth it as you will always
-// be up to date with the script repos
+// be up to date with the script repos by running bower update
 //
 // Be sure to check your paths and dependencies here
 // ===========================================================================================================
@@ -161,6 +162,8 @@ gulp.task('bower-files', [
 // ===========================================================================================================
 // Move all the bits and bobs from the bower folder into the project (You don't have to do this, and can refer directly to the bower folder if you want to)
 // ===========================================================================================================
+
+// Copy bootstrap
 
 gulp.task('bootstrap-scss', function () {
     return gulp.src(config.bowerPath + 'bootstrap-sass/assets/fonts/**/**.*')
@@ -203,20 +206,28 @@ gulp.task('lightgallery-css', function () {
         .pipe(gulp.dest(config.scssPath + '/lightgallery'))
 });
 
+// Copy imagesloaded in destination dir
+
 gulp.task('imagesloaded', function() {
 	return gulp.src(config.bowerPath + 'imagesloaded/imagesloaded.js')
         .pipe(gulp.dest(config.jsPathVendor + '/imagesloaded'))
 });
+
+// Copy isotope in destination dir
 
 gulp.task('isotope', function() {
 	return gulp.src(config.bowerPath + 'isotope/dist/**.*')
         .pipe(gulp.dest(config.jsPathVendor + '/isotope'))
 });
 
+// Copy enquire in destination dir
+
 gulp.task('enquire', function() {
 	return gulp.src(config.bowerPath + 'enquire/dist/**.*')
         .pipe(gulp.dest(config.jsPathVendor + '/enquire'))
 });
+
+// Copy slickslider in destination dir
 
 gulp.task('slick-scripts', function() {
 	return gulp.src(config.bowerPath + 'slick-carousel/slick/slick.js')
@@ -243,20 +254,28 @@ gulp.task('slick-img', function() {
         .pipe(gulp.dest(config.dest + '/images'))
 });
 
+// Copy matchheight in destination dir
+
 gulp.task('matchheight', function() {
 	return gulp.src(config.bowerPath + 'matchHeight/dist/**.*')
         .pipe(gulp.dest(config.jsPathVendor + '/matchHeight'))
 });
+
+// Copy cycle 2 in destination dir
 
 gulp.task('cycle2', function () {
     return gulp.src(config.bowerPath + 'jquery-cycle2/build/jquery.cycle2.js')
         .pipe(gulp.dest(config.jsPathVendor + '/cycle2'))
 });
 
+// Copy respond in destination dir
+
 gulp.task('respond', function () {
     return gulp.src(config.bowerPath + 'respond/src/**.*')
         .pipe(gulp.dest(config.jsPathVendor + '/respond'))
 });
+
+// Copy flexibility in destination dir
 
 gulp.task('flexibility', function () {
     return gulp.src(config.bowerPath + 'flexibility/flexibility.js')
@@ -274,7 +293,6 @@ gulp.task('vendor-styles', function(){
 		}))
 		.pipe(plugins.autoprefixer('last 2 version', 'safari 5', 'ie 8', 'ie 9', 'opera 12.1', 'ios 6', 'android 4'))
 		.pipe(plugins.rename('third-party.min.css'))
-
 		.pipe(plugins.combineMq())
 		.pipe(plugins.cleanCss({compatibility: 'ie8'}))
 		.pipe(gulp.dest(config.destCss))
@@ -291,7 +309,6 @@ gulp.task('styles', function () {
 			includePaths: scssFilePaths,
 			includePaths: bootstrapPath
 		}))
-		.on('error', reportError)
 		.pipe(plugins.autoprefixer('last 2 version', 'safari 5', 'ie 8', 'ie 9', 'opera 12.1', 'ios 6', 'android 4'))
 		.pipe(plugins.rename('styles.min.css'))
 		.pipe(plugins.cleanCss({compatibility: 'ie8'}))
@@ -301,6 +318,7 @@ gulp.task('styles', function () {
 			template: '<%= name %>.<%= ext %>'
 		}))
 		.pipe(gulp.dest(config.destCss))
+		.on('error', reportError)
 
 });
 
@@ -317,7 +335,6 @@ gulp.task('scripts', function () {
 			path: config.destJs + '/scripts.js',
 			cwd: ''
 		}))
-		.on('error', reportError)
 		.pipe(plugins.rename('scripts.min.js'))
 		.pipe(plugins.uglify())
 		.pipe(gulp.dest(config.destJs))
@@ -326,6 +343,7 @@ gulp.task('scripts', function () {
 			template: '<%= name %>.<%= ext %>'
 		}))
 		.pipe(gulp.dest(config.destJs))
+		.on('error', reportError)
 
 });
 
