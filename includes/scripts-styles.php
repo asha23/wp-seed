@@ -19,7 +19,7 @@ function seed_scripts_and_styles() {
 			'js'  => '/build/js/scripts.min.js' . '?' . $assets['build/js/scripts.min.js']['hash'],
 		);
 
-		wp_register_script( 'modernizr', get_stylesheet_directory_uri() . '/build/js/modernizr.js' );
+		wp_register_script( 'modernizr', get_stylesheet_directory_uri() . '/build/js/modernizr.min.js' ); 
 
 		wp_register_style( 'SEED-stylesheet', get_stylesheet_directory_uri() . $assets['css'], array(), '', 'all' );
 		wp_enqueue_style( 'SEED-stylesheet' );
