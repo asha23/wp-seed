@@ -13,7 +13,7 @@ require_once( 'includes/navwalker.php' ); // Add a navigation walker for the mai
 require_once( 'includes/scripts-styles.php' ); // Enqueue scripts and styles.
 require_once( 'includes/menus.php' ); // Add AKA Menu functions.
 require_once( 'includes/pagination.php' ); // Add pagination function.
-//require_once( 'includes/custom-post-types.php' ); // Create useful custom post types. Can be changed or removed
+require_once( 'includes/custom-post-types.php' ); // Create useful custom post types. Can be changed or removed
 require_once( 'includes/default-pages.php' ); // Create default pages on theme activation (and only the first time).
 
 
