@@ -1,10 +1,9 @@
 <?php
-
+// Do some initial stuff
 
 $default_pages_generated = get_option( 'default_pages_generated', false );
 
 if (isset($_GET['activated']) && is_admin() && $default_pages_generated == false){
-
 
         $pages = array(
                 'Home' => array (
