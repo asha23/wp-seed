@@ -1,7 +1,7 @@
 
 ### Wordpress Seed Theme
 
-Stable version 1
+Stable version 0.5 Beta
 
 This is a simple Bootstrap seed theme with Bower and Gulp interactions.
 
