@@ -1,5 +1,4 @@
 // Base Javascript
-// Version 0.5
 
 // Suppress Lint semicolon warnings
 /* jshint asi: true */
