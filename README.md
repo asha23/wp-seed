@@ -1,7 +1,7 @@
 
 ### Wordpress Seed Theme
 
-Stable version 0.5 Beta
+Version 1.
 
 This is a simple Bootstrap seed theme with Bower and Gulp interactions.
 
@@ -23,6 +23,8 @@ And you should be good to go.
 * MatchHeight
 * Cycle 2
 * Isotope
+
+Feel free to add your own via Bower.
 
 #### Gulp libraries included
 
@@ -68,9 +70,7 @@ Some of these are not used. But are available.
 
 This theme requires Advanced Custom Fields Professional. Which if you don't have already, you should get.
 
-The acf-json file starts up the video and gallery sections as part of the theme installation.
-
-Delete the contents of this folder if you don't require this functionality.
+Remove the contents of ```acf-json``` if you want to start from scratch.
 
 #### General
 
