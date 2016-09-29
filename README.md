@@ -3,7 +3,11 @@
 
 Version 1.
 
-This is a simple Bootstrap seed theme with Bower and Gulp interactions.
+This is a simple Bootstrap seed theme with Bower and Gulp interactions. I have removed all bloat and unnecessary code from this theme, so it doesn't have multilanguage support, widgets, sidebars or any such clutter. It should be considered a base theme for developing using Advanced Custom Fields and using Wordpress as a pure CMS.
+
+Over the years I decided that widgets and widget areas were an unnecessary and bloated method to create content. I have almost 100% switched to creating these by hand. So you won't find these features in this theme. This theme is essentially as bare-bones as it comes.
+
+Of course, feel free to add them.
 
 	npm install
 	bower install
