@@ -9,6 +9,24 @@
     "start": "node index.js"
   },
   "dependencies": {
+    
+  },
+  "engines": {},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/asha23/wp-seed"
+  },
+  "keywords": [
+    "node",
+    "wordpress",
+    "mysql"
+  ],
+  "author": "Ash Whiting",
+  "contributors": [
+    ""
+  ],
+  "license": "MIT",
+  "devDependencies": {
     "del": "^2.0.2",
     "gulp": "^3.9.0",
     "gulp-asset-hash": "^0.2.0",
@@ -43,21 +61,5 @@
     "jslint": "^0.10.3",
     "run-sequence": "^1.1.4",
     "stream-combiner2": "^1.1.1"
-  },
-  "engines": {},
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/asha23/wp-seed"
-  },
-  "keywords": [
-    "node",
-    "wordpress",
-    "mysql"
-  ],
-  "author": "Ash Whiting",
-  "contributors": [
-    ""
-  ],
-  "license": "MIT",
-  "devDependencies": {}
+  }
 }
