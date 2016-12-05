@@ -7,8 +7,7 @@ Why did I remove the Widgets and such? Well, I very rarely use widgets. You coul
 
 You might find my choices of JS libraries arbitrary as well. However, the ones I have included in the Bower file are ones I use for pretty much every project. They are in the main bulletproof and I've thoroughly tested them. Again, you are welcome to use your own preferred sets of stuff, simply edit the bower.json file.
 
-I personally like Bootstrap. It does what I need it to do. I've used the grid on so many projects now that I consider it pretty much bulletproof.   
-So the skeleton of this theme is Bootstrap sass. It's probably a big job to retrofit another framework into this theme, so you are probably best off rolling your own for Suzy/Foundation etc.
+I personally like Bootstrap. It does what I need it to do. I've used the grid on so many projects now that I consider it pretty much bulletproof. So the skeleton of this theme is Bootstrap sass. It's probably a big job to retrofit another framework into this theme, so you are probably best off rolling your own for Suzy/Foundation etc.
 
 This utilises Yarn for dependency management - https://yarnpkg.com/
 
