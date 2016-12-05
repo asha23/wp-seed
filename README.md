@@ -42,7 +42,7 @@ Feel free to add your own via Bower.
 
 This theme probably requires Advanced Custom Fields Professional. Which if you don't have already, you should get.
 
-Remove the contents of ```acf-json``` if you want to start from scratch.
+Remove the contents of ```acf-json``` if you want to start from scratch. But this simply sets up some initial theme options.
 
 #### General
 
