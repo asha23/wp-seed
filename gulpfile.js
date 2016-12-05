@@ -334,7 +334,7 @@ gulp.task('lint', function(){
 // ===========================================================================================================
 
 gulp.task('modernizr', function() {
-	return gulp.src(config.jsPathVendor + "/modernizr.js")
+	return gulp.src(config.modernizr + "/modernizr.js")
 		.pipe(plugins.modernizr({
 			options: [
 				'setClasses',
