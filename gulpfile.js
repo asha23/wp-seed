@@ -37,10 +37,10 @@ var config = {
 var jsFileList = [
 	config.jsPathVendor  	+ 'respond/respond.js',
     config.jsPathVendor 	+ 'bootstrap-js/bootstrap.js',
-    // config.bowerPath 		+ 'lightgallery/dist/js/lightgallery.js',
-    // config.bowerPath 		+ 'lightgallery/dist/js/lg-thumbnail.js',
-    // config.bowerPath 		+ 'lightgallery/dist/js/lg-fullscreen.js',
-    // config.bowerPath 		+ 'lightgallery/dist/js/lg-video.js',
+    // config.bowerPath 	+ 'lightgallery/dist/js/lightgallery.js',
+    // config.bowerPath 	+ 'lightgallery/dist/js/lg-thumbnail.js',
+    // config.bowerPath 	+ 'lightgallery/dist/js/lg-fullscreen.js',
+    // config.bowerPath 	+ 'lightgallery/dist/js/lg-video.js',
 	// config.jsPathVendor 	+ 'isotope/isotope.pkgd.js',
 	// config.jsPathVendor 	+ 'cycle2/jquery.cycle2.js',
 	// config.jsPathVendor 	+ 'slick/slick.js',
@@ -80,7 +80,6 @@ var plugins = gulpLoadPlugins();
 // TASKS
 //
 // Sequencing became necessary because we only want to lint scripts.js (not every script!)
-// Also, we want to fold Modernizr into the concatenated script file for deployment
 //
 // If there is a better solution then fill your boots
 // ===========================================================================================================
@@ -381,7 +380,7 @@ gulp.task('watch', function () {
 
 });
 
-// Bo Selector limit check
+// Bo Selector limit check (bless)
 // ===========================================================================================================
 
 gulp.task('selector', function(){
