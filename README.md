@@ -1,5 +1,5 @@
 
-### Wordpress Seed Theme
+# Wordpress Seed Theme
 
 This is a simple Bootstrap seed theme with Bower and Gulp interactions. I have removed all bloat and unnecessary code from this theme, so it doesn't have multilanguage support, widgets, sidebars or any other WordPress bloat. It should be considered a base theme for developing using Advanced Custom Fields and using WordPress as a pure CMS.
 
