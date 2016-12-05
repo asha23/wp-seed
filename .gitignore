@@ -8,4 +8,5 @@ sassdoc/*
 library/js/vendor-libs/*
 library/js/vendor-libs
 vendor-libs
-build/*
+build/css
+build/js
