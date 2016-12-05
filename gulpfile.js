@@ -69,7 +69,6 @@ var runSequence = require('run-sequence'); // Load as this isn't gulp based
 var buster = require('gulp-asset-hash'); // Load as this didn't work :P
 var cssSelectorLimit = require('gulp-css-selector-limit');
 var cleanCSS = require('gulp-clean-css');
-var sassdoc = require('sassdoc');
 
 // Load all the other plugins by referring to package.json
 
@@ -87,7 +86,7 @@ var plugins = gulpLoadPlugins();
 // ===========================================================================================================
 
 gulp.task('default', function() {
-	runSequence('bower', 'bower-files', 'modernizr', 'lint', 'scripts', 'styles', 'sassdoc');
+	runSequence('bower', 'bower-files', 'modernizr', 'lint', 'scripts', 'styles');
 });
 
 // ===========================================================================================================
@@ -413,14 +412,6 @@ gulp.task('minify-bless', function(){
 			template: '<%= name %>.<%= ext %>'
 		}))
 		.pipe(gulp.dest('build/css/'));
-});
-
-// Sassdoc
-// ===========================================================================================================
-
-gulp.task('sassdoc', function () {
-  return gulp.src('library/scss/**/*.scss')
-    .pipe(sassdoc());
 });
 
 // ===========================================================================================================
