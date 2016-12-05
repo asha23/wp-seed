@@ -25,7 +25,8 @@ var config = {
 	destImg:        			'build/images/**/*.{gif,png,jpg,jpeg,svg}',
 	dest:           			'build',
 	destCss:        			'build/css',
-	destJs:         			'build/js'
+	destJs:         			'build/js',
+	modernizr:                  'library/js/modernizr'
 };
 
 // ===========================================================================================================

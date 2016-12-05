@@ -5,3 +5,6 @@ bower/*
 bower/
 sassdoc/
 sassdoc/*
+js/vendor-libs/*
+js/vendor-libs
+vendor-libs
