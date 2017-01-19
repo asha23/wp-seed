@@ -257,23 +257,25 @@ gulp.task('flexibility', function () {
 
 gulp.task('vendor-styles', function(){
 	return gulp.src([config.scssPath + '/third-party.scss']) // third party css
+		.pipe(plumber({
+			errorHandler: reportError
+		}))
 		.pipe(plugins.sass({
 			//outputStyle: 'compressed',
-            includePaths: scssFilePaths
+            		includePaths: scssFilePaths
 		}))
 		.pipe(plugins.autoprefixer('last 2 version', 'safari 5', 'ie 8', 'ie 9', 'opera 12.1', 'ios 6', 'android 4'))
 		.pipe(plugins.rename('third-party.min.css'))
 		.pipe(plugins.combineMq())
 		.pipe(plugins.cleanCss({compatibility: 'ie8'}))
 		.pipe(gulp.dest(config.destCss))
-		.on('error', reportError)
 
 })
 
 gulp.task('styles', function () {
 	return gulp.src([config.scssPath + '/styles.scss']) // Base scss include
-		.pipe(plugins.plumber(function(error) {
-			errorHandler:reportError
+		.pipe(plumber({
+			errorHandler: reportError
 		}))
 		.pipe(plugins.sass({
 			includePaths: scssFilePaths,
@@ -288,7 +290,6 @@ gulp.task('styles', function () {
 			template: '<%= name %>.<%= ext %>'
 		}))
 		.pipe(gulp.dest(config.destCss))
-		.on('error', reportError)
 
 });
 
@@ -298,8 +299,8 @@ gulp.task('styles', function () {
 
 gulp.task('scripts', function () {
 	return gulp.src(jsFileList)
-		.pipe(plugins.plumber(function(error) {
-			errorHandler:reportError
+		.pipe(plumber({
+			errorHandler: reportError
 		}))
 		.pipe(plugins.concat({
 			path: config.destJs + '/scripts.js',
@@ -313,7 +314,6 @@ gulp.task('scripts', function () {
 			template: '<%= name %>.<%= ext %>'
 		}))
 		.pipe(gulp.dest(config.destJs))
-		.on('error', reportError)
 
 });
 
