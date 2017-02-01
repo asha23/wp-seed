@@ -13,7 +13,7 @@
 // ===========================================================================================================
 
 var config = {
-	uploadPath:					'../../uploads',
+	uploadPath:				'../../uploads',
 	bowerPath:      			'bower/',
 	bowerPathAll:  				'bower/**/*',
 	jsPath:         			'library/js/',
@@ -27,9 +27,7 @@ var config = {
 	dest:           			'build',
 	destCss:        			'build/css',
 	destJs:         			'build/js',
-	modernizr:                  'library/js/modernizr',
-	adobe_animate:				'library/js/map-animation',
-	create_js:                  'https://code.createjs.com/createjs-2015.11.26.min.js'
+	modernizr:                  		'library/js/modernizr',
 };
 
 // ===========================================================================================================
@@ -40,25 +38,21 @@ var config = {
 
 var jsFileList = [
 	config.jsPathVendor  	+ 'respond/respond.js',
-    config.jsPathVendor 	+ 'bootstrap-js/bootstrap.js',
-	config.jsPathVendor  	+ 'lightgallery/lightgallery.js',
-	config.jsPathVendor  	+ 'lg-thumbnail/lg-thumbnail.js',
-	config.jsPathVendor  	+ 'lg-video/lg-video.js',
-	config.jsPathVendor  	+ 'lg-fullscreen/lg-fullscreen.js',
+    	config.jsPathVendor 	+ 'bootstrap-js/bootstrap.js',
+	// config.jsPathVendor  + 'lightgallery/lightgallery.js',
+	// config.jsPathVendor  + 'lg-thumbnail/lg-thumbnail.js',
+	// config.jsPathVendor  + 'lg-video/lg-video.js',
+	// config.jsPathVendor  + 'lg-fullscreen/lg-fullscreen.js',
 	// config.jsPathVendor 	+ 'imagesloaded/imagesloaded.js',
-	config.jsPathVendor 	+ 'isotope/isotope.pkgd.js',
-	config.jsPathVendor 	+ 'cycle2/jquery.cycle2.js',
-	config.jsPathVendor 	+ 'slick/slick.js',
-	config.jsPathVendor 	+ 'countup/countUp.js',
-	config.jsPathVendor 	+ 'matchMedia/matchMedia.js',
-	config.jsPathVendor 	+ 'enquire/enquire.js',
-	config.jsPathVendor 	+ 'js-cookie/js.cookie.js',
-	config.jsPathVendor 	+ 'matchHeight/jquery.matchHeight.js',
-	config.jsPathVendor 	+ 'velocity/velocity.js',
+	// config.jsPathVendor 	+ 'isotope/isotope.pkgd.js',
+	// config.jsPathVendor 	+ 'cycle2/jquery.cycle2.js',
+	// config.jsPathVendor 	+ 'slick/slick.js',
+	// config.jsPathVendor 	+ 'matchMedia/matchMedia.js',
+	// config.jsPathVendor 	+ 'enquire/enquire.js',
+	// config.jsPathVendor 	+ 'js-cookie/js.cookie.js',
+	// config.jsPathVendor 	+ 'matchHeight/jquery.matchHeight.js',
+	// config.jsPathVendor 	+ 'velocity/velocity.js',
 	// config.jsPathVendor 	+ 'create_js/createjs.min.js',
-	// config.jsPath		 	+ '/map-animation/main.js',
-	//config.adobe_animate 	+ '/main.js',
-	//config.jsPathVendor		+ 'jquery-lazyload-any/jquery.lazyload-any.js',
 	config.jsPath 			+ '/scripts.js'
 ];
 
@@ -149,8 +143,7 @@ gulp.task('bower-files', [
 	'countup',
 	'bootstrap-validator',
 	'js-cookie',
-	'velocity',
-	'lazyload'
+	'velocity'
 ]);
 
 // ===========================================================================================================
@@ -326,12 +319,6 @@ gulp.task('velocity', function () {
         .pipe(gulp.dest(config.jsPathVendor + '/velocity'))
 });
 
-// Lazyload
-
-gulp.task('lazyload', function () {
-    return gulp.src(config.bowerPath + 'jquery-lazyload-any/src/jquery.lazyload-any.js')
-        .pipe(gulp.dest(config.jsPathVendor + '/jquery-lazyload-any'))
-});
 
 // Errors
 
