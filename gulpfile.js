@@ -1,7 +1,7 @@
 // ===========================================================================================================
 // Gulp config file for Seed Wordpress Base theme
 // Author: Ash Whiting
-// Version: 0.3.1
+// Version: 0.3.5
 // ===========================================================================================================
 
 // ===========================================================================================================
@@ -26,7 +26,9 @@ var config = {
 	dest:           			'build',
 	destCss:        			'build/css',
 	destJs:         			'build/js',
-	modernizr:                  'library/js/modernizr'
+	modernizr:                  'library/js/modernizr',
+	adobe_animate:				'library/js/map-animation',
+	create_js:                  'https://code.createjs.com/createjs-2015.11.26.min.js'
 };
 
 // ===========================================================================================================
@@ -38,13 +40,17 @@ var config = {
 var jsFileList = [
 	config.jsPathVendor  	+ 'respond/respond.js',
     config.jsPathVendor 	+ 'bootstrap-js/bootstrap.js',
-    // config.bowerPath 	+ 'lightgallery/dist/js/lightgallery.js',
-    // config.bowerPath 	+ 'lightgallery/dist/js/lg-thumbnail.js',
-    // config.bowerPath 	+ 'lightgallery/dist/js/lg-fullscreen.js',
-    // config.bowerPath 	+ 'lightgallery/dist/js/lg-video.js',
+	// config.jsPathVendor  	+ 'lightgallery/lightgallery.js',
+	// config.jsPathVendor  	+ 'lg-thumbnail/lg-thumbnail.js',
+	// config.jsPathVendor  	+ 'lg-video/lg-video.js',
+	// config.jsPathVendor  	+ 'lg-fullscreen/lg-fullscreen.js',
+	// config.jsPathVendor 	+ 'imagesloaded/imagesloaded.js',
 	// config.jsPathVendor 	+ 'isotope/isotope.pkgd.js',
 	// config.jsPathVendor 	+ 'cycle2/jquery.cycle2.js',
 	// config.jsPathVendor 	+ 'slick/slick.js',
+	// config.jsPathVendor 	+ 'matchMedia/matchMedia.js',
+	// config.jsPathVendor 	+ 'enquire/enquire.js',
+	// config.jsPathVendor 	+ 'js-cookie/js.cookie.js',
 	// config.jsPathVendor 	+ 'matchHeight/jquery.matchHeight.js',
 	config.jsPath 			+ '/scripts.js'
 ];
@@ -53,8 +59,8 @@ var jsFileList = [
 
 var scssFilePaths = [
     config.bowerPath 		+ 'components-font-awesome/scss/',
-    //config.bowerPath 		+ 'lightgallery/dist/css/',
-	//config.bowerPath 		+ 'slick-carousel/slick/'
+    config.bowerPath 		+ 'lightgallery/dist/css/',
+	config.bowerPath 		+ 'slick-carousel/slick/'
 ];
 
 var bootstrapPath = [
@@ -65,16 +71,18 @@ var bootstrapPath = [
 // Load some Gulp plugins
 // ===========================================================================================================
 
+var gulpLoadPlugins = require('gulp-load-plugins');
+var plugins = gulpLoadPlugins();
 var gulp = require('gulp'); // Load the Gulp core
 var runSequence = require('run-sequence'); // Load as this isn't gulp based
 var buster = require('gulp-asset-hash'); // Load as this didn't work :P
 var cssSelectorLimit = require('gulp-css-selector-limit');
 var cleanCSS = require('gulp-clean-css');
-
+var sourcemaps = require('gulp-sourcemaps');
+var plumber = require('gulp-plumber');
 // Load all the other plugins by referring to package.json
 
-var gulpLoadPlugins = require('gulp-load-plugins');
-var plugins = gulpLoadPlugins();
+
 
 
 // ===========================================================================================================
@@ -115,6 +123,10 @@ gulp.task('bower-files', [
 	'lightgallery-css',
 	'lightgallery-fonts',
 	'lightgallery-img',
+	'lightgallery-thumbnail',
+	'lightgallery-video',
+	'lightgallery-fullscreen',
+	'lightgallery',
 	'imagesloaded',
 	'isotope',
 	'slick-scripts',
@@ -126,7 +138,12 @@ gulp.task('bower-files', [
 	'matchheight',
 	'cycle2',
 	'respond',
-	'flexibility'
+	'flexibility',
+	'countup',
+	'bootstrap-validator',
+	'js-cookie',
+	'velocity',
+	'lazyload'
 ]);
 
 // ===========================================================================================================
@@ -174,6 +191,28 @@ gulp.task('lightgallery-img', function () {
 gulp.task('lightgallery-css', function () {
     return gulp.src(config.bowerPath + 'lightgallery/dist/css/lightgallery.css')
         .pipe(gulp.dest(config.scssPath + '/lightgallery'))
+});
+
+// Copy lightgallery scripts to vendor dir
+
+gulp.task('lightgallery', function() {
+	return gulp.src(config.bowerPath + 'lightgallery/dist/js/lightgallery.js')
+        .pipe(gulp.dest(config.jsPathVendor + '/lightgallery'))
+});
+
+gulp.task('lightgallery-video', function() {
+	return gulp.src(config.bowerPath + 'lg-video/dist/lg-video.js')
+        .pipe(gulp.dest(config.jsPathVendor + '/lg-video'))
+});
+
+gulp.task('lightgallery-fullscreen', function() {
+	return gulp.src(config.bowerPath + 'lg-fullscreen/dist/lg-fullscreen.js')
+        .pipe(gulp.dest(config.jsPathVendor + '/lg-fullscreen'))
+});
+
+gulp.task('lightgallery-thumbnail', function() {
+	return gulp.src(config.bowerPath + 'lg-thumbnail/dist/lg-thumbnail.js')
+        .pipe(gulp.dest(config.jsPathVendor + '/lg-thumbnail'))
 });
 
 // Copy imagesloaded in destination dir
@@ -252,6 +291,48 @@ gulp.task('flexibility', function () {
         .pipe(gulp.dest(config.jsPathVendor + '/flexibility'))
 });
 
+// Copy countup into destination dir
+
+gulp.task('countup', function () {
+    return gulp.src(config.bowerPath + 'countUp.js/dist/countUp.js')
+        .pipe(gulp.dest(config.jsPathVendor + '/countup'))
+});
+
+// Bootstrap form validation
+
+gulp.task('bootstrap-validator', function () {
+    return gulp.src(config.bowerPath + 'bootstrap-validator/dist/validator.js')
+        .pipe(gulp.dest(config.jsPathVendor + '/bootstrap-validator'))
+});
+
+// Cookies
+
+gulp.task('js-cookie', function () {
+    return gulp.src(config.bowerPath + 'js-cookie/src/js.cookie.js')
+        .pipe(gulp.dest(config.jsPathVendor + '/js-cookie'))
+});
+
+// Velocity
+
+gulp.task('velocity', function () {
+    return gulp.src(config.bowerPath + 'velocity/velocity.js')
+        .pipe(gulp.dest(config.jsPathVendor + '/velocity'))
+});
+
+// Lazyload
+
+gulp.task('lazyload', function () {
+    return gulp.src(config.bowerPath + 'jquery-lazyload-any/src/jquery.lazyload-any.js')
+        .pipe(gulp.dest(config.jsPathVendor + '/jquery-lazyload-any'))
+});
+
+// Errors
+
+var onError = function (err) {
+	console.log(err.toString());
+	this.emit('end');
+};
+
 // Styles task
 // ===========================================================================================================
 
@@ -262,14 +343,13 @@ gulp.task('vendor-styles', function(){
 		}))
 		.pipe(plugins.sass({
 			//outputStyle: 'compressed',
-            		includePaths: scssFilePaths
+            includePaths: scssFilePaths
 		}))
 		.pipe(plugins.autoprefixer('last 2 version', 'safari 5', 'ie 8', 'ie 9', 'opera 12.1', 'ios 6', 'android 4'))
 		.pipe(plugins.rename('third-party.min.css'))
 		.pipe(plugins.combineMq())
 		.pipe(plugins.cleanCss({compatibility: 'ie8'}))
 		.pipe(gulp.dest(config.destCss))
-
 })
 
 gulp.task('styles', function () {
@@ -313,6 +393,7 @@ gulp.task('scripts', function () {
 			manifest: './build/manifest.json',
 			template: '<%= name %>.<%= ext %>'
 		}))
+		.pipe(sourcemaps.write())
 		.pipe(gulp.dest(config.destJs))
 
 });
@@ -322,12 +403,14 @@ gulp.task('scripts', function () {
 
 gulp.task('lint', function(){
 	return gulp.src(config.jsPath + 'js/scripts.js')
+		.pipe(plumber({
+			errorHandler: reportError
+		}))
 		.pipe(plugins.jshint())
 		.pipe(plugins.plumber(function(error) {
 			errorHandler:reportError
 		}))
 		.pipe(plugins.jshint.reporter('default'))
-		.on('error', reportError)
 });
 
 // Modernizr task
@@ -348,7 +431,6 @@ gulp.task('modernizr', function() {
 		.pipe(plugins.uglify())
 		.pipe(plugins.rename('modernizr.min.js'))
 		.pipe(gulp.dest(config.destJs))
-		.on('error', reportError)
 });
 
 // Images task
@@ -356,6 +438,16 @@ gulp.task('modernizr', function() {
 
 gulp.task('images', function () {
 	return gulp.src('build/images/**/*.{gif,png,jpg,jpeg,svg}')
+		.pipe(plugins.cache(plugins.imagemin({
+			optimizationLevel: 3,
+			progressive: false,
+			interlaced: false
+		})))
+		.pipe(gulp.dest(config.imgPath))
+});
+
+gulp.task('images-uploads', function () {
+	return gulp.src('../../uploads/**/*.{gif,png,jpg,jpeg,svg}')
 		.pipe(plugins.cache(plugins.imagemin({
 			optimizationLevel: 3,
 			progressive: false,
@@ -436,7 +528,6 @@ var reportError = function (error) {
     if (error.fileName) {
 		report += chalk('FILE:') + ' ' + error.fileName + '\n';
 	}
-
     console.error(report);
-    this.emit('end'); // Stop the watch task from ending
+	this.emit('end');
 }
