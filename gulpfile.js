@@ -1,7 +1,7 @@
 // ===========================================================================================================
 // Gulp config file for Seed Wordpress Base theme
 // Author: Ash Whiting
-// Version: 0.3.5
+// Version: 0.3.1
 // ===========================================================================================================
 
 // ===========================================================================================================
@@ -13,6 +13,7 @@
 // ===========================================================================================================
 
 var config = {
+	uploadPath:					'../../uploads',
 	bowerPath:      			'bower/',
 	bowerPathAll:  				'bower/**/*',
 	jsPath:         			'library/js/',
@@ -40,18 +41,24 @@ var config = {
 var jsFileList = [
 	config.jsPathVendor  	+ 'respond/respond.js',
     config.jsPathVendor 	+ 'bootstrap-js/bootstrap.js',
-	// config.jsPathVendor  	+ 'lightgallery/lightgallery.js',
-	// config.jsPathVendor  	+ 'lg-thumbnail/lg-thumbnail.js',
-	// config.jsPathVendor  	+ 'lg-video/lg-video.js',
-	// config.jsPathVendor  	+ 'lg-fullscreen/lg-fullscreen.js',
+	config.jsPathVendor  	+ 'lightgallery/lightgallery.js',
+	config.jsPathVendor  	+ 'lg-thumbnail/lg-thumbnail.js',
+	config.jsPathVendor  	+ 'lg-video/lg-video.js',
+	config.jsPathVendor  	+ 'lg-fullscreen/lg-fullscreen.js',
 	// config.jsPathVendor 	+ 'imagesloaded/imagesloaded.js',
-	// config.jsPathVendor 	+ 'isotope/isotope.pkgd.js',
-	// config.jsPathVendor 	+ 'cycle2/jquery.cycle2.js',
-	// config.jsPathVendor 	+ 'slick/slick.js',
-	// config.jsPathVendor 	+ 'matchMedia/matchMedia.js',
-	// config.jsPathVendor 	+ 'enquire/enquire.js',
-	// config.jsPathVendor 	+ 'js-cookie/js.cookie.js',
-	// config.jsPathVendor 	+ 'matchHeight/jquery.matchHeight.js',
+	config.jsPathVendor 	+ 'isotope/isotope.pkgd.js',
+	config.jsPathVendor 	+ 'cycle2/jquery.cycle2.js',
+	config.jsPathVendor 	+ 'slick/slick.js',
+	config.jsPathVendor 	+ 'countup/countUp.js',
+	config.jsPathVendor 	+ 'matchMedia/matchMedia.js',
+	config.jsPathVendor 	+ 'enquire/enquire.js',
+	config.jsPathVendor 	+ 'js-cookie/js.cookie.js',
+	config.jsPathVendor 	+ 'matchHeight/jquery.matchHeight.js',
+	config.jsPathVendor 	+ 'velocity/velocity.js',
+	// config.jsPathVendor 	+ 'create_js/createjs.min.js',
+	// config.jsPath		 	+ '/map-animation/main.js',
+	//config.adobe_animate 	+ '/main.js',
+	//config.jsPathVendor		+ 'jquery-lazyload-any/jquery.lazyload-any.js',
 	config.jsPath 			+ '/scripts.js'
 ];
 
@@ -453,7 +460,7 @@ gulp.task('images-uploads', function () {
 			progressive: false,
 			interlaced: false
 		})))
-		.pipe(gulp.dest(config.imgPath))
+		.pipe(gulp.dest(config.uploadPath))
 });
 
 // Watch task
@@ -464,6 +471,7 @@ gulp.task('watch', function () {
 		runSequence('styles')
 	});
 	gulp.watch(config.destImg, ['images']);
+	gulp.watch(config.uploadPath, ['images-uploads']);
 
 	// Run the scripts task in the correct sequence
 
