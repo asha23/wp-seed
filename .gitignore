@@ -10,3 +10,4 @@ library/js/vendor-libs
 vendor-libs
 build/css
 build/js
+yarn.lock
