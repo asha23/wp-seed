@@ -43,16 +43,6 @@ var jsFileList = [
 	// config.jsPathVendor  + 'lg-thumbnail/lg-thumbnail.js',
 	// config.jsPathVendor  + 'lg-video/lg-video.js',
 	// config.jsPathVendor  + 'lg-fullscreen/lg-fullscreen.js',
-	// config.jsPathVendor 	+ 'imagesloaded/imagesloaded.js',
-	// config.jsPathVendor 	+ 'isotope/isotope.pkgd.js',
-	// config.jsPathVendor 	+ 'cycle2/jquery.cycle2.js',
-	// config.jsPathVendor 	+ 'slick/slick.js',
-	// config.jsPathVendor 	+ 'matchMedia/matchMedia.js',
-	// config.jsPathVendor 	+ 'enquire/enquire.js',
-	// config.jsPathVendor 	+ 'js-cookie/js.cookie.js',
-	// config.jsPathVendor 	+ 'matchHeight/jquery.matchHeight.js',
-	// config.jsPathVendor 	+ 'velocity/velocity.js',
-	// config.jsPathVendor 	+ 'create_js/createjs.min.js',
 	config.jsPath 			+ '/scripts.js'
 ];
 
@@ -61,7 +51,7 @@ var jsFileList = [
 var scssFilePaths = [
     config.bowerPath 		+ 'components-font-awesome/scss/',
     config.bowerPath 		+ 'lightgallery/dist/css/',
-	config.bowerPath 		+ 'slick-carousel/slick/'
+	//config.bowerPath 		+ 'slick-carousel/slick/'
 ];
 
 var bootstrapPath = [
@@ -82,9 +72,6 @@ var cleanCSS = require('gulp-clean-css');
 var sourcemaps = require('gulp-sourcemaps');
 var plumber = require('gulp-plumber');
 // Load all the other plugins by referring to package.json
-
-
-
 
 // ===========================================================================================================
 // TASKS
@@ -128,22 +115,11 @@ gulp.task('bower-files', [
 	'lightgallery-video',
 	'lightgallery-fullscreen',
 	'lightgallery',
-	'imagesloaded',
-	'isotope',
 	'slick-scripts',
 	'slick-fonts',
 	'slick-css',
 	'slick-scss',
 	'slick-img',
-	'enquire',
-	'matchheight',
-	'cycle2',
-	'respond',
-	'flexibility',
-	'countup',
-	'bootstrap-validator',
-	'js-cookie',
-	'velocity'
 ]);
 
 // ===========================================================================================================
@@ -215,26 +191,7 @@ gulp.task('lightgallery-thumbnail', function() {
         .pipe(gulp.dest(config.jsPathVendor + '/lg-thumbnail'))
 });
 
-// Copy imagesloaded in destination dir
 
-gulp.task('imagesloaded', function() {
-	return gulp.src(config.bowerPath + 'imagesloaded/imagesloaded.js')
-        .pipe(gulp.dest(config.jsPathVendor + '/imagesloaded'))
-});
-
-// Copy isotope in destination dir
-
-gulp.task('isotope', function() {
-	return gulp.src(config.bowerPath + 'isotope/dist/**.*')
-        .pipe(gulp.dest(config.jsPathVendor + '/isotope'))
-});
-
-// Copy enquire in destination dir
-
-gulp.task('enquire', function() {
-	return gulp.src(config.bowerPath + 'enquire/dist/**.*')
-        .pipe(gulp.dest(config.jsPathVendor + '/enquire'))
-});
 
 // Copy slickslider in destination dir
 
@@ -261,62 +218,6 @@ gulp.task('slick-fonts', function() {
 gulp.task('slick-img', function() {
 	return gulp.src(config.bowerPath + 'slick-carousel/slick/ajax-loader.gif')
         .pipe(gulp.dest(config.dest + '/images'))
-});
-
-// Copy matchheight in destination dir
-
-gulp.task('matchheight', function() {
-	return gulp.src(config.bowerPath + 'matchHeight/dist/**.*')
-        .pipe(gulp.dest(config.jsPathVendor + '/matchHeight'))
-});
-
-// Copy cycle 2 in destination dir
-
-gulp.task('cycle2', function () {
-    return gulp.src(config.bowerPath + 'jquery-cycle2/build/jquery.cycle2.js')
-        .pipe(gulp.dest(config.jsPathVendor + '/cycle2'))
-});
-
-// Copy respond in destination dir
-
-gulp.task('respond', function () {
-    return gulp.src(config.bowerPath + 'respond/src/**.*')
-        .pipe(gulp.dest(config.jsPathVendor + '/respond'))
-});
-
-// Copy flexibility in destination dir
-
-gulp.task('flexibility', function () {
-    return gulp.src(config.bowerPath + 'flexibility/flexibility.js')
-        .pipe(gulp.dest(config.jsPathVendor + '/flexibility'))
-});
-
-// Copy countup into destination dir
-
-gulp.task('countup', function () {
-    return gulp.src(config.bowerPath + 'countUp.js/dist/countUp.js')
-        .pipe(gulp.dest(config.jsPathVendor + '/countup'))
-});
-
-// Bootstrap form validation
-
-gulp.task('bootstrap-validator', function () {
-    return gulp.src(config.bowerPath + 'bootstrap-validator/dist/validator.js')
-        .pipe(gulp.dest(config.jsPathVendor + '/bootstrap-validator'))
-});
-
-// Cookies
-
-gulp.task('js-cookie', function () {
-    return gulp.src(config.bowerPath + 'js-cookie/src/js.cookie.js')
-        .pipe(gulp.dest(config.jsPathVendor + '/js-cookie'))
-});
-
-// Velocity
-
-gulp.task('velocity', function () {
-    return gulp.src(config.bowerPath + 'velocity/velocity.js')
-        .pipe(gulp.dest(config.jsPathVendor + '/velocity'))
 });
 
 
