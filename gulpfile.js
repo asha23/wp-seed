@@ -13,7 +13,7 @@
 // ===========================================================================================================
 
 var config = {
-	uploadPath:				'../../uploads',
+	uploadPath:					'../../uploads',
 	bowerPath:      			'bower/',
 	bowerPathAll:  				'bower/**/*',
 	jsPath:         			'library/js/',
@@ -27,7 +27,7 @@ var config = {
 	dest:           			'build',
 	destCss:        			'build/css',
 	destJs:         			'build/js',
-	modernizr:                  		'library/js/modernizr',
+	modernizr:                  'library/js/modernizr',
 };
 
 // ===========================================================================================================
@@ -38,7 +38,7 @@ var config = {
 
 var jsFileList = [
 	config.jsPathVendor  	+ 'respond/respond.js',
-    	config.jsPathVendor 	+ 'bootstrap-js/bootstrap.js',
+    config.jsPathVendor 	+ 'bootstrap-js/bootstrap.js',
 	// config.jsPathVendor  + 'lightgallery/lightgallery.js',
 	// config.jsPathVendor  + 'lg-thumbnail/lg-thumbnail.js',
 	// config.jsPathVendor  + 'lg-video/lg-video.js',
