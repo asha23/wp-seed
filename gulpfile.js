@@ -51,7 +51,6 @@ var jsFileList = [
 var scssFilePaths = [
     config.bowerPath 		+ 'components-font-awesome/scss/',
     config.bowerPath 		+ 'lightgallery/dist/css/',
-	//config.bowerPath 		+ 'slick-carousel/slick/'
 ];
 
 var bootstrapPath = [
@@ -114,16 +113,12 @@ gulp.task('bower-files', [
 	'lightgallery-thumbnail',
 	'lightgallery-video',
 	'lightgallery-fullscreen',
-	'lightgallery',
-	'slick-scripts',
-	'slick-fonts',
-	'slick-css',
-	'slick-scss',
-	'slick-img',
+	'lightgallery'
 ]);
 
 // ===========================================================================================================
-// Move all the bits and bobs from the bower folder into the project (You don't have to do this, and can refer directly to the bower folder if you want to)
+// Move all the bits and bobs from the bower folder into the project
+// You don't have to do this, and can refer directly to the bower folder if you want to
 // ===========================================================================================================
 
 // Copy bootstrap
@@ -189,35 +184,6 @@ gulp.task('lightgallery-fullscreen', function() {
 gulp.task('lightgallery-thumbnail', function() {
 	return gulp.src(config.bowerPath + 'lg-thumbnail/dist/lg-thumbnail.js')
         .pipe(gulp.dest(config.jsPathVendor + '/lg-thumbnail'))
-});
-
-
-
-// Copy slickslider in destination dir
-
-gulp.task('slick-scripts', function() {
-	return gulp.src(config.bowerPath + 'slick-carousel/slick/slick.js')
-        .pipe(gulp.dest(config.jsPathVendor + '/slick'))
-});
-
-gulp.task('slick-scss', function() {
-	return gulp.src(config.bowerPath + 'slick-carousel/slick/slick-theme.scss')
-        .pipe(gulp.dest(config.scssPath + '/slick'))
-});
-
-gulp.task('slick-css', function() {
-	return gulp.src(config.bowerPath + 'slick-carousel/slick/slick.css')
-        .pipe(gulp.dest(config.scssPath + '/slick'))
-})
-
-gulp.task('slick-fonts', function() {
-	return gulp.src(config.bowerPath + 'slick-carousel/slick/fonts/**.*')
-        .pipe(gulp.dest(config.dest + '/fonts'))
-});
-
-gulp.task('slick-img', function() {
-	return gulp.src(config.bowerPath + 'slick-carousel/slick/ajax-loader.gif')
-        .pipe(gulp.dest(config.dest + '/images'))
 });
 
 
@@ -290,7 +256,6 @@ gulp.task('scripts', function () {
 		}))
 		.pipe(sourcemaps.write())
 		.pipe(gulp.dest(config.destJs))
-
 });
 
 // Linting task
