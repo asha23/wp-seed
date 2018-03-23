@@ -233,3 +233,5 @@ function custom_login_logo() {
 	echo '<style type="text/css">h1 a { background-image: url('.get_bloginfo('template_directory').'/build/images/custom-login-logo.png) !important; height:82px!important; background-size:164px!important; width:200px!important;}</style>';
 }
 add_action('login_head', 'custom_login_logo');
+
+add_filter('acf/settings/remove_wp_meta_box', '__return_true');
