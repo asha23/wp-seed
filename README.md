@@ -14,7 +14,6 @@ This utilises Yarn for dependency management - https://yarnpkg.com/
 Once you have installed it, simply run:
 
 	yarn   
-	bower install   
 	gulp
 
 	gulp watch
@@ -35,7 +34,7 @@ And you should be good to go.
 * Cycle 2
 * Isotope
 
-Feel free to add your own via Bower.
+Feel free to add your own via Bower. These may need to be connected up using the gulpfile. There is also a Babel workflow in the build pipeline.
 
 #### Advanced Custom Fields
 
