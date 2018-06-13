@@ -68,6 +68,7 @@ var plumber = require('gulp-plumber');
 var babel = require('gulp-babel');
 var postcss = require('gulp-postcss');
 var flexibility = require('postcss-flexibility');
+
 // Load all the other plugins by referring to package.json
 
 // ===========================================================================================================
@@ -144,6 +145,15 @@ var onError = function (err) {
 	this.emit('end');
 };
 
+function reportError (error) {
+    notify().write({
+        title: 'Gulp: CSS',
+        message: 'Error'
+    });
+
+    console.log(error.toString());
+}
+
 // Styles task
 // ===========================================================================================================
 
@@ -166,6 +176,7 @@ gulp.task('styles', function () {
 		.pipe(plumber({
 			errorHandler: reportError
 		}))
+		.on('error',console.log.bind(console))
 		.pipe(buster.hash({
 			manifest: './build/manifest.json',
 			template: '<%= name %>.<%= ext %>'
@@ -198,6 +209,7 @@ gulp.task('scripts', function () {
 			manifest: './build/manifest.json',
 			template: '<%= name %>.<%= ext %>'
 		}))
+		.on('error',console.log.bind(console))
 		.pipe(sourcemaps.write('./maps'))
 		.pipe(gulp.dest(config.destJs))
 });
@@ -311,28 +323,7 @@ gulp.task('minify-bless', function(){
 		.pipe(gulp.dest('build/css/'));
 });
 
-// ===========================================================================================================
-// HELPER FUNCTIONS
-// ===========================================================================================================
 
-// Error reporter function
 
-var reportError = function (error) {
-    var lineNumber = (error.lineNumber) ? 'LINE ' + error.lineNumber + ' -- ' : '';
 
-    var report = '';
-    var chalk = plugins.util.colors.yellow.bgRed;
 
-    report += chalk('😢 ') + ' [' + error.plugin + ']\n';
-    report += chalk('😢 ') + ' ' + error.message + '\n\n';
-
-    if (error.lineNumber) {
-		report += chalk('LINE:') + ' ' + error.lineNumber + '\n';
-	}
-
-    if (error.fileName) {
-		report += chalk('FILE:') + ' ' + error.fileName + '\n';
-	}
-    console.error(report);
-	this.emit('end');
-}
